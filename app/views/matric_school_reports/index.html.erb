@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container">
+  <h1>Matric School Reports</h1>
+  <div class="well">Total schools analyzed: <%= @total_schools%></div>
 
-<h1>Matric School Reports</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @matric_school_reports.each do |matric_school_report| %>
+  <h3>Matric school summary:</h3>
+  <table class="table table-striped">
       <tr>
-        <td><%= link_to 'Show', matric_school_report %></td>
-        <td><%= link_to 'Edit', edit_matric_school_report_path(matric_school_report) %></td>
-        <td><%= link_to 'Destroy', matric_school_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Year</th>
+        <th>Wrote</th>
+        <th>Passed</th>
+        <th>Average</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @yearly_summaries.each do |yearly_summary| %>
+        <tr>
+          <td><%= yearly_summary[:year] %></td>
+          <td><%= yearly_summary[:wrote_total] %></td>
+          <td><%= yearly_summary[:pass_total] %></td>
+          <td><%= yearly_summary[:pass_average] %></td>
+        </tr>
+      <% end %>
+  </table>
 
-<br>
+  <br>
+  <h3>Summary:</h3>
 
-<%= link_to 'New Matric School Report', new_matric_school_report_path %>
+  <%= column_chart [{name: '2014', data: @histoplot_2014}, {name: '2015', data: @histoplot_2015}, {name: '2016', data: @histoplot_2016}] %>
+
+</div>
+
