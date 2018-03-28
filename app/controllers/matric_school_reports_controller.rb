@@ -1,4 +1,5 @@
 class MatricSchoolReportsController < ApplicationController
+  http_basic_authenticate_with name: "you_shall_not", password: "pass"
 
   def index
     matric_school_reports = MatricSchoolReport.all
