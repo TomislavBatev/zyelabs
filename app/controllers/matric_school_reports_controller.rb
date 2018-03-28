@@ -4,9 +4,7 @@ class MatricSchoolReportsController < ApplicationController
 
   def index
     @matric_school_reports = MatricSchoolReport.all
-
-
-    @total_schools = @matric_school_reports.count
+    @total_schools = @matric_school_reports.pluck(:school).uniq.count
     @yearly_summaries = @matric_school_reports.group_by{ |r| r.year }.map do |year, results|
       { year: year,
         wrote_total: results.map(&:wrote).sum,
