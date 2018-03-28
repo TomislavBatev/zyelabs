@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  school: 
+  year: 1
+  wrote: 1
+  passed: 1
+
+two:
+  school: 
+  year: 1
+  wrote: 1
+  passed: 1

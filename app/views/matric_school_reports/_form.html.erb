@@ -1,0 +1,17 @@
+<%= form_with(model: matric_school_report, local: true) do |form| %>
+  <% if matric_school_report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(matric_school_report.errors.count, "error") %> prohibited this matric_school_report from being saved:</h2>
+
+      <ul>
+      <% matric_school_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

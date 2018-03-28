@@ -1,0 +1,2 @@
+module MatricSchoolReportsHelper
+end
